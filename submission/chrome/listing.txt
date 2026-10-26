@@ -1,0 +1,41 @@
+NAME
+Tab Dumper
+
+LANGUAGE
+English
+
+CATEGORY
+Productivity / Workflow & Planning (choose the closest current dashboard category).
+
+SUMMARY (manifest description)
+Save and close tabs, search a private local archive, organise useful links and export them as Markdown.
+
+DESCRIPTION
+Too many tabs open because you might need them later? Tab Dumper gives them a home.
+
+• Save tabs before closing them.
+• Search saved titles, links, descriptions and available page text.
+• Organise links with categories and purposes such as Read later, To do or Reference.
+• Revisit up to ten links at a time with an optional weekly reminder.
+• Export JSON backups or Markdown files for Obsidian and Notion.
+
+Your archive stays on your device. No account, tracking, advertising, cloud sync or AI service. Saved links stay until you delete them.
+
+Some pages can only be saved as links. Captures contain plain text, not a complete offline copy of the website. Pinned tabs, playing audio and detected unfinished edits are left open, but always save your work before closing tabs.
+
+The optional weekly reminder checks its schedule in the background and displays a toolbar dot and dashboard banner. It never automatically closes tabs or deletes entries.
+
+Export a backup before uninstalling or changing browser profiles. Installing from another store or changing extension IDs creates a separate archive; use Export backup and Import backup to transfer your saved links.
+
+HOMEPAGE AND SUPPORT URL
+https://viscioletti.com/tab-dumper
+
+PRIVACY POLICY URL
+https://viscioletti.com/tab-dumper#privacy
+Alternative public policy: https://github.com/feddernico/tab-dumper/blob/main/PRIVACY.md
+
+SOURCE
+https://github.com/feddernico/tab-dumper
+
+TEST INSTRUCTIONS
+No account, credentials or payment is needed. Load the extension, open two ordinary web pages, then click its toolbar icon. Assign a category and Save & close one tab. Search the archived entry, open Preview & edit, change its description, and reopen it. Export a JSON backup and import the same backup: entries should merge. Export Markdown. Open Weekly review and Keep an entry. Try saving a pinned tab or a page with an edited form: it should stay open. Help & privacy is available in the sidebar. Text capture may be unavailable on restricted pages, including browser/store pages; those can be link-only or excluded. The archive and saved-text previews work offline.

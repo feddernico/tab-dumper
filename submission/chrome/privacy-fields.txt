@@ -1,0 +1,37 @@
+SINGLE PURPOSE
+Help users reduce open-tab clutter by saving selected web tabs to a private, searchable local archive that they can organise, revisit and export.
+
+TABS JUSTIFICATION
+Display open tabs across regular browser windows, including their titles and URLs, so users can choose what to archive. Use tab IDs to close a tab only after saving, reopen an archived URL and unload selected pages. The extension does not request the history API or monitor browsing history.
+
+SCRIPTING JUSTIFICATION
+Run bundled page-text extraction and an unsaved-edit check only when the user chooses Preview, Save or Unload. This supports local text previews/search and helps avoid closing unfinished work. No persistent content scripts are registered.
+
+STORAGE JUSTIFICATION
+Store reminder settings locally and migrate archives from earlier versions. The main archive is in local IndexedDB. No storage.sync or cloud synchronisation is used.
+
+UNLIMITED STORAGE JUSTIFICATION
+Keep the user's saved text and imported legacy screenshots locally without an arbitrary entry cap or quota eviction of their archive. Users retain records until they delete them; available disk space still applies.
+
+ALARMS JUSTIFICATION
+Check hourly whether the optional weekly review reminder is due. The reminder sets a toolbar badge and dashboard banner. It does not open pages, capture browsing activity, close tabs or remove archive entries automatically.
+
+HOST PERMISSIONS JUSTIFICATION
+HTTP and HTTPS access allows visible page-text capture and detection of possible unsaved edits on user-selected web tabs, including background tabs selected in a batch. The extension's core archive workflow covers arbitrary websites. activeTab alone grants access only to the activated tab, so it does not cover capturing multiple selected background tabs. No remote-code loading, background scraping, cookie access or browsing-history monitoring is performed. Sleeping, loading and restricted pages may be saved as links only.
+
+REMOTE CODE
+No, I am not using remote code. All JavaScript, styles and fonts are bundled. chrome.scripting executes the bundled capturePage function, not downloaded code. The optional Tally form opens on an external website, not inside an extension page.
+
+DATA USAGE — disclose local handling, not just server transmission
+Select Web history: open-tab and saved-page URLs/titles are handled locally to provide the archive. This does not mean the extension reads Chrome's history database.
+Select Website content: selected page descriptions/text and imported legacy screenshots are stored locally for previews, search and export.
+Also disclose Personally identifiable information conservatively for the optional support flow: email/name and request details are submitted directly through the external Tally form, separately from the archive. They are not automatically attached by the extension. The policy explicitly describes this distinction.
+
+The extension does not independently collect geolocation, health/financial records, credentials or click/keystroke analytics. User-selected page text can contain sensitive information; do not claim that saved content can never include personal data. Unsaved-edit checks inspect form state locally but do not return or archive field values.
+
+DATA-USE CERTIFICATIONS FOR THE OWNER TO REVIEW
+The implementation does not sell user data or transfer it for unrelated purposes; data is used only for the stated archive/support purposes; it is not used for creditworthiness or lending. Review the dashboard's exact certification wording before checking the boxes yourself. Do not select “no user data handled” merely because the archive stays local.
+
+PRIVACY POLICY
+https://viscioletti.com/tab-dumper#privacy
+Alternative: https://github.com/feddernico/tab-dumper/blob/main/PRIVACY.md

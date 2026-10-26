@@ -28,6 +28,7 @@ try {
   const article = await context.newPage(); await article.goto(`${origin}/article`);
   const page = await context.newPage(); page.on("pageerror", error => errors.push(error.message));
   await page.goto(`chrome-extension://${id}/archive.html`);
+  console.log("Browser:", await page.evaluate(() => navigator.userAgent));
   const ready = () => expect(page.locator("body")).not.toHaveClass(/busy/);
   await expect(page.locator(".tab-card")).toHaveCount(1); await ready();
   await page.evaluate(() => document.fonts.ready);
@@ -78,6 +79,17 @@ try {
   await expect(page.locator(".tab-card")).toHaveCount(1); await expect(page.locator(".card-title")).toHaveText("My useful article");
   await page.reload(); await ready(); await page.locator('[data-view="archive"]').click(); await ready();
   await expect(page.locator(".tab-card")).toHaveCount(1);
+  // The archive and captured text must remain usable without a network connection.
+  await context.setOffline(true);
+  await page.reload(); await ready();
+  await page.locator('[data-view="archive"]').click(); await ready();
+  await page.locator("#search").fill("quokka research");
+  await expect(page.locator(".tab-card")).toHaveCount(1);
+  await page.getByRole("button", { name: "Preview & edit" }).click(); await ready();
+  await expect(page.locator("#detail-text")).toContainText("quokka");
+  await page.getByRole("button", { name: "Close preview" }).click(); await ready();
+  await context.setOffline(false);
+  await page.locator("#search").fill(""); await ready();
   // Imported titles/content must be inert and review should stop after ten decisions.
   const entries = Array.from({ length: 12 }, (_, i) => ({ url: `https://review.example/${i}`, title: `Research note ${i + 1}`, description: "An idea to come back to.", categories: ["research"], savedAt: `2025-01-${String(i + 1).padStart(2, "0")}T00:00:00Z` }));
   entries[0].title = '<img src=x onerror="alert(1)">';

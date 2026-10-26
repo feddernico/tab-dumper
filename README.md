@@ -12,6 +12,8 @@ The manifest now points to the included `background.js`. The previous version po
 
 Reload the existing extension in the same folder to retain its identity and local data. Removing/uninstalling the extension can delete the archive; export a JSON backup first.
 
+For Chrome, use `chrome://extensions` and the same Developer mode / Load unpacked steps. Run `npm run package:chrome` for the Chrome Web Store ZIP. The [Chrome submission kit](submission/chrome/README.md) includes the store-sized assets and privacy-field guidance.
+
 ## Everyday use
 
 - **Open tabs:** review HTTP/HTTPS tabs across regular windows. Assign comma-separated categories and a purpose, then save individual tabs or select a batch. Each link is committed to the archive before closing its tab. A failed save leaves the tab open.
@@ -72,4 +74,4 @@ Run `npm run test:opera` to check the installed Opera in an isolated temporary p
 
 Source: https://github.com/feddernico/tab-dumper. See [build instructions](submission/build-instructions.txt) for setup and packaging.
 
-Support: https://viscioletti.com/tab-dumper (the website page will be published after store approval). Until then, the assistance form is available directly at https://tally.so/r/e55RWl.
+Support: https://viscioletti.com/tab-dumper. The assistance form is also available directly at https://tally.so/r/e55RWl. Read the [privacy policy](PRIVACY.md) for local storage, exports and support submissions.

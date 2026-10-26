@@ -28,6 +28,8 @@ try {
   }
   const download = await context.request.get("http://127.0.0.1:8766/downloads/tab-dumper-2.0.1-opera.zip");
   if (!download.ok() || (await download.body()).subarray(0, 2).toString() !== "PK") throw new Error("Download is not a ZIP");
+  const chromeDownload = await context.request.get("http://127.0.0.1:8766/downloads/tab-dumper-2.0.1-chrome.zip");
+  if (!chromeDownload.ok() || (await chromeDownload.body()).subarray(0, 2).toString() !== "PK") throw new Error("Chrome download is not a ZIP");
   await page.screenshot({ path: path.join(output, "website-desktop.png") });
   await page.screenshot({ path: path.join(output, "website-full.png"), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });

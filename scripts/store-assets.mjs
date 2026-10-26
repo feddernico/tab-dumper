@@ -4,11 +4,14 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "..");
-const output = path.join(root, "submission", "screenshots");
+const target = process.argv[2] || "opera";
+if (!["opera", "chrome"].includes(target)) throw new Error("Choose opera or chrome");
+const output = path.join(root, "submission", ...(target === "chrome" ? ["chrome", "screenshots"] : ["screenshots"]));
 await mkdir(output, { recursive: true });
 const profile = await mkdtemp(path.join(tmpdir(), "tab-dumper-assets-"));
 const context = await chromium.launchPersistentContext(profile, {
-  executablePath: process.env.TEST_BROWSER_PATH || "/Applications/Opera.app/Contents/MacOS/Opera",
+  channel: "chromium",
+  executablePath: process.env.TEST_BROWSER_PATH || (target === "opera" ? "/Applications/Opera.app/Contents/MacOS/Opera" : undefined),
   headless: true, viewport: { width: 1280, height: 900 },
   args: [`--disable-extensions-except=${root}`, `--load-extension=${root}`]
 });
@@ -30,11 +33,12 @@ try {
   await expect(page.locator("#message")).toBeHidden({ timeout: 12000 });
   await page.evaluate(() => document.fonts.ready);
   await page.mouse.move(0, 0);
-  await page.screenshot({ path: path.join(output, "website-archive.png") });
+  if (target === "opera") await page.screenshot({ path: path.join(output, "website-archive.png") });
   // Capture the desktop layout at 800 × 600 device pixels for the listing.
-  await page.setViewportSize({ width: 1280, height: 960 });
+  await page.setViewportSize({ width: 1280, height: target === "chrome" ? 800 : 960 });
   const display = await context.newCDPSession(page);
   const capture = async name => {
+    if (target === "chrome") return page.screenshot({ path: path.join(output, name) });
     const { data } = await display.send("Page.captureScreenshot", { format: "png", clip: { x: 0, y: 0, width: 1280, height: 960, scale: 0.625 }, captureBeyondViewport: false });
     await writeFile(path.join(output, name), Buffer.from(data, "base64"));
   };

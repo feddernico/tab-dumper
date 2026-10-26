@@ -1,5 +1,6 @@
-"""Build a reproducible, allowlisted Opera ZIP and validate the shipped files."""
+"""Build a reproducible, allowlisted store ZIP and validate the shipped files."""
 from pathlib import Path
+import argparse
 import hashlib
 import json
 import re
@@ -7,7 +8,12 @@ import struct
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser()
+parser.add_argument("--target", choices=["opera", "chrome"], default="opera")
+target = parser.parse_args().target
 manifest = json.loads((ROOT / "manifest.json").read_text())
+if target == "chrome":
+    manifest["icons"]["128"] = "assets/icons/chrome-icon-128.png"
 version = manifest["version"]
 assert re.fullmatch(r"(?:0|[1-9]\d*)(?:\.(?:0|[1-9]\d*)){0,3}", version)
 assert len(manifest["description"]) <= 132
@@ -23,6 +29,8 @@ files = [
     "assets/fonts/source-sans-pro-semibold.woff",
     *manifest["icons"].values(),
 ]
+if target == "chrome":
+    files.append("PRIVACY.md")
 for relative in files:
     assert (ROOT / relative).is_file(), f"Missing release file: {relative}"
 for size, relative in manifest["icons"].items():
@@ -38,13 +46,16 @@ for file in files:
 
 output = ROOT / "dist"
 output.mkdir(exist_ok=True)
-archive = output / f"tab-dumper-{version}-opera.zip"
+archive = output / f"tab-dumper-{version}-{target}.zip"
 with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as package:
     for relative in sorted(set(files)):
         info = zipfile.ZipInfo(relative, date_time=(2026, 10, 26, 0, 0, 0))
         info.compress_type = zipfile.ZIP_DEFLATED
         info.external_attr = 0o100644 << 16
-        package.writestr(info, (ROOT / relative).read_bytes())
+        data = (ROOT / relative).read_bytes()
+        if target == "chrome" and relative == "manifest.json":
+            data = (json.dumps(manifest, indent=2) + "\n").encode()
+        package.writestr(info, data)
 with zipfile.ZipFile(archive) as package:
     assert package.testzip() is None
     assert set(package.namelist()) == set(files)

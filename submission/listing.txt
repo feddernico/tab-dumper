@@ -23,7 +23,8 @@ BUILD INSTRUCTIONS
 See build-instructions.txt.
 
 PRIVACY NOTICE
-Included in the extension: Help & privacy (help.html). The website privacy page is a draft until store approval; do not enter its unpublished URL in the submission.
+https://viscioletti.com/tab-dumper#privacy
+Also included in the extension: Help & privacy (help.html).
 
 ASSISTANCE FORM
 https://tally.so/r/e55RWl
