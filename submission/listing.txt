@@ -1,0 +1,61 @@
+NAME
+Tab Dumper
+
+VERSION
+2.0.1
+
+CATEGORY
+Productivity
+
+LICENCE
+MIT (included in the extension package). Source Sans Pro: SIL Open Font License.
+
+SUPPORT PAGE
+https://viscioletti.com/tab-dumper
+
+PUBLIC SOURCE CODE
+https://github.com/feddernico/tab-dumper
+
+MODERATOR SOURCE CODE
+Not required: readable runtime source is included in the uploaded ZIP. The public repository also includes tests and packaging instructions.
+
+BUILD INSTRUCTIONS
+See build-instructions.txt.
+
+PRIVACY NOTICE
+Included in the extension: Help & privacy (help.html). The website privacy page is a draft until store approval; do not enter its unpublished URL in the submission.
+
+ASSISTANCE FORM
+https://tally.so/r/e55RWl
+
+SUMMARY
+Save and close tabs, search a private local archive, organise useful links and export them as Markdown.
+
+DESCRIPTION
+Too many tabs open because you might need them later? Tab Dumper gives those pages a searchable home on your device.
+
+Click the toolbar icon to open a clean blue-and-white dashboard. Review the tabs in your regular windows, choose categories and a purpose, then save one tab or a selection. Each link is saved before its tab closes. When a loaded page allows it, Tab Dumper also captures a description and visible page text for a local preview.
+
+Find useful links again with search across titles, URLs, descriptions, saved text and categories. Organise them as Read later, To do, Reference or Done, add your own notes and reopen the original pages when needed. Saved entries never expire automatically.
+
+A weekly review helps you revisit up to ten saved links at a time. Background work is limited to checking the reminder schedule hourly and on browser startup, plus one-time migration of older data. A toolbar dot and dashboard banner show when the review is due. Reminders can be disabled; the extension does not automatically close tabs or delete entries.
+
+Export a JSON backup to move or restore your archive. Export individual entries or the full archive as Markdown for Obsidian or Notion. This is file export, not automatic synchronisation.
+
+Your archive stays in this browser profile. There is no account for the extension, analytics, advertising, cloud sync or AI service. Scripts and fonts are bundled. Archived content is not transmitted to the developer or a third party. Private windows are not supported. The separate, optional assistance form is hosted by Tally and receives only what you submit there.
+
+Capture is best-effort: sleeping, loading and restricted pages may be saved as links only. Text captures are limited to 200,000 characters and label truncation. Images, original formatting, forms, login sessions and browsing history are not preserved. Pinned tabs, playing audio and detected form edits are protected, but always save unfinished work before closing a page.
+
+Export a backup before uninstalling, deleting a browser profile or moving from an unpacked copy to the store version.
+
+PERMISSIONS FOR REVIEWERS
+tabs: list titles/URLs across windows; close selected tabs after saving; reopen archived URLs; discard selected loaded pages.
+scripting + http/https host access: extract visible text and inspect for unsaved edits only following the user's Preview, Save or Unload action. Batch capture targets background tabs, so activeTab alone would not cover the existing feature. No persistent content scripts or browsing-history monitoring.
+storage: reminder preferences and migration from the earlier local-storage archive.
+unlimitedStorage: retain saved page text without an arbitrary count/quota eviction limit. Available disk space still applies.
+alarms: hourly check for the weekly toolbar reminder.
+
+REVIEWER QUICK TEST
+Open two ordinary web pages, click the Tab Dumper toolbar icon, add a category, and Save & close one tab. Find it under Your archive by category or text, edit its description and reopen it. Export a JSON backup and import it: the same URL should merge rather than duplicate. Try Weekly review and Keep an entry. A pinned tab should offer Save link rather than close. Help & privacy is available inside the extension.
+
+The store package contains readable source, bundled fonts, icons and licence files only. No remote JavaScript, ads, tracking or monetisation.

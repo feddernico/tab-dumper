@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tab Dumper · Your archive</title>
+  <link rel="icon" href="assets/icons/icon-32.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="archive.html"><img class="brand-icon" src="assets/icons/icon.svg" alt="" /> Tab Dumper<span class="brand-caption">A little room to think.</span></a>
+    <nav aria-label="Library">
+      <button class="nav-item active" data-view="open"><span>Open tabs</span><span id="open-count">—</span></button>
+      <button class="nav-item" data-view="archive"><span>Your archive</span><span id="archive-count">—</span></button>
+      <button class="nav-item" data-view="review"><span>Weekly review</span><span class="dot" id="review-dot" hidden></span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="local-label"><span class="dot"></span> Saved on this device</div>
+      <p>Your links stay until you delete them. Keep a backup before removing the extension.</p>
+      <button class="subtle" id="backup">Export backup ↗</button>
+      <button class="subtle" id="import">Import backup</button>
+      <a class="subtle" href="help.html" target="_blank" rel="noopener">Help &amp; privacy</a>
+      <input type="file" id="import-file" accept=".json,application/json" hidden />
+    </div>
+  </aside>
+  <main>
+    <header class="page-header"><div><div class="eyebrow">LESS CLUTTER, MORE CLARITY</div><h1 id="heading">Make room for what’s next.</h1><p id="subtitle">Save the useful things. Let the tabs go.</p></div><button class="secondary" id="refresh">↻ Refresh</button></header>
+    <section class="review-banner" id="review-banner" hidden><div><strong>A little reset is due.</strong><p>Take a few minutes to revisit ten saved links.</p></div><button id="start-review">Start weekly review →</button></section>
+    <section class="toolbar" aria-label="Search and filters">
+      <label class="search"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 4 4" /></svg></span><input id="search" type="search" placeholder="Search titles, links, saved content or categories…" aria-label="Search tabs and archive" /></label>
+      <select id="category-filter" aria-label="Filter category"><option value="">All categories</option></select>
+      <select id="purpose-filter" aria-label="Filter purpose"><option value="">All purposes</option></select>
+    </section>
+    <section id="open-tools" class="batch-tools">
+      <label><input type="checkbox" id="select-all" /> Select visible</label>
+      <input id="batch-categories" placeholder="Categories, comma separated" aria-label="Categories for selected tabs" />
+      <select id="batch-purpose" aria-label="Purpose for selected tabs"></select>
+      <button id="archive-selected" disabled>Save & close selected</button>
+    </section>
+    <section id="archive-tools" class="archive-tools" hidden><span id="result-count"></span><button class="secondary" id="markdown">Export all as Markdown ↗</button></section>
+    <section id="review-tools" class="review-tools" hidden>
+      <div><strong>Ten links. A few decisions.</strong><p>Oldest unreviewed items first. Keep, recategorise, reopen or delete. “Done” items are excluded.</p></div>
+      <label><input id="weekly" type="checkbox" /> Weekly toolbar reminder</label>
+      <button class="secondary" id="finish-review">Finish for this week</button>
+    </section>
+    <div class="list-heading"><span id="list-label">YOUR OPEN TABS</span><span id="list-note">Across all regular windows</span></div>
+    <section id="list" aria-label="Tabs" aria-busy="true"><p class="empty">Loading your tabs…</p></section>
+    <button id="show-more" class="secondary more" hidden>Show more</button>
+    <p class="footnote" id="capture-note">Saving captures a text preview when available. Sleeping tabs stay asleep. Page text does not preserve forms, downloads or browsing history.</p>
+  </main>
+  <dialog id="detail" aria-labelledby="detail-title">
+    <div class="dialog-top"><span class="eyebrow" id="detail-type">SAVED LINK</span><button class="icon-button" id="close-detail" aria-label="Close preview">✕</button></div>
+    <h2 id="detail-title"></h2><a id="detail-url" target="_blank" rel="noopener noreferrer"></a>
+    <div id="saved-fields">
+      <label>Title<input id="edit-title" /></label>
+      <label>Description / why I saved this<textarea id="edit-description" rows="3"></textarea></label>
+      <div class="field-row"><label>Categories<input id="edit-categories" placeholder="research, work, ideas" /></label><label>Purpose<select id="edit-purpose"></select></label></div>
+      <button id="save-details">Save changes</button>
+    </div>
+    <p class="capture-label" id="capture-status"></p>
+    <img id="saved-screenshot" alt="Previously saved screenshot of this page" hidden />
+    <div class="article-preview" id="detail-text"></div>
+    <div class="dialog-actions" id="saved-actions"><button class="secondary" id="export-one">Export Markdown ↗</button><button id="restore-one">Reopen page ↗</button></div>
+  </dialog>
+  <div id="message" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tab Dumper · Help and privacy</title>
+  <link rel="icon" href="assets/icons/icon-32.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="help-page">
+<main>
+  <a href="archive.html">← Back to your archive</a>
+  <h1>Tab Dumper</h1>
+  <p>Save the useful things. Let the tabs go.</p>
+  <h2>Getting started</h2>
+  <ol>
+    <li>Click the extension icon to open the dashboard.</li>
+    <li>Use Open tabs to review pages across your regular windows. Add categories and a purpose, then choose Save &amp; close.</li>
+    <li>Use Your archive to search titles, descriptions, saved text and categories, edit a saved link or reopen it.</li>
+    <li>Use Weekly review to revisit up to ten links. Keep marks a link reviewed. Done excludes it from review; it remains saved.</li>
+  </ol>
+  <h2>What is saved?</h2>
+  <p>Each entry includes its URL, title, save date, categories, purpose and description. When a loaded page allows it, Tab Dumper also saves visible article or page text and a short text preview. Captures are limited to 200,000 characters and truncation is labelled.</p>
+  <p>Sleeping, loading and inaccessible pages are saved as links without being reactivated. Text extraction may miss images, formatting, PDFs, paywalled content and embedded frames. Saved entries do not preserve login sessions, form state, page history or downloads.</p>
+  <p>A link is committed to storage before its tab is closed. Pinned tabs, tabs playing audio and detected form edits are protected. Edit detection is best-effort; save unfinished work before closing a page.</p>
+  <h2>Backups and moving to another installation</h2>
+  <p>Export backup downloads a JSON file. Import backup merges it by URL, preserving existing organisation and combining categories. Markdown exports work as files you can move into Obsidian or import into Notion. They do not synchronise automatically.</p>
+  <p>Export before uninstalling, deleting a browser profile or moving from an unpacked copy to the store version. Separate installations may have separate archives. Backups are ordinary files, so protect any private content they contain.</p>
+  <h2>Reminders</h2>
+  <p>The weekly reminder appears as a toolbar dot and dashboard banner. The browser checks the schedule hourly and on startup. Pin the icon to see the reminder. It does not open tabs automatically or run while Opera is closed. You can turn it off in Weekly review.</p>
+  <h2 id="privacy">Privacy notice</h2>
+  <p>Updated 26 October 2026. Developer: Federico Viscioletti.</p>
+  <p>Tab Dumper reads tab URLs and titles to display your open tabs. When you choose Preview, Save or Unload, it inspects the selected page for readable text and possible unsaved edits. Form-field values are not included in saved page text. It does not monitor your browsing history or capture pages in the background.</p>
+  <p>Archive entries and settings are stored locally in your browser profile. The extension has no analytics, advertising, cloud sync or AI service, and does not transmit archived content to the developer or a third party. Fonts and scripts are bundled. Private-window tabs are not supported.</p>
+  <p>Entries remain until you delete them. Delete removes the active saved record; export files you previously downloaded must be deleted separately. Supported copies from the old Tab Tinder storage are removed after successful migration. Unsupported or malformed legacy records, if any, remain in browser storage until the extension is removed. Uninstalling removes extension storage; keep a backup if you need the archive.</p>
+  <p>If you open a saved page, your browser contacts that website as usual. The external product website has its own privacy and cookie behaviour. The assistance form is hosted by Tally: only information you enter in that form is submitted to Tally and made available to Federico to handle your request. It does not receive your archive automatically. Do not submit passwords, private page content or archive backups.</p>
+  <p>For support, visit the <a href="https://viscioletti.com/tab-dumper" target="_blank" rel="noopener noreferrer">Tab Dumper support page</a> or <a href="https://tally.so/r/e55RWl" target="_blank" rel="noopener noreferrer">open the assistance form directly</a>. Tally's handling is described in its <a href="https://tally.so/help/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a>.</p>
+  <h2>Why these permissions?</h2>
+  <ul>
+    <li><strong>Tabs:</strong> list URLs and titles, reopen saved links, close selected tabs and unload pages.</li>
+    <li><strong>Scripting and website access:</strong> read text and check for unsaved edits on a page you explicitly choose. Capturing a batch of background tabs requires access beyond the currently active tab.</li>
+    <li><strong>Storage:</strong> retain reminder settings and migrate older archives.</li>
+    <li><strong>Unlimited storage:</strong> retain saved text without the usual extension quota or a fixed entry cap. Available disk space still applies.</li>
+    <li><strong>Alarms:</strong> check whether the weekly review is due.</li>
+  </ul>
+  <h2>Licence</h2>
+  <p>Tab Dumper is distributed under the <a href="LICENSE">MIT License</a>. Source Sans Pro is distributed under the <a href="assets/fonts/LICENSE">SIL Open Font License</a>.</p>
+</main>
+</body>
+</html>

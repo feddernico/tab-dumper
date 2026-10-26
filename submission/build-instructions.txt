@@ -1,0 +1,44 @@
+Tab Dumper 2.0.1
+
+Source repository: https://github.com/feddernico/tab-dumper
+
+Environment used:
+- macOS 27.0 (build 26A428)
+- Python 3.15.0 for the packaging script (standard library only)
+- Node.js 26.12.1 and npm 11.20.0 for development tests
+- Opera 138.0 for browser workflow checks
+
+The extension uses plain JavaScript, HTML and CSS. No compilation,
+minification, merging, remote scripts or production dependencies are used.
+All runtime source files are included verbatim in the submitted ZIP.
+The fonts and PNG icons are already included; regenerating them is optional.
+
+To create the upload package from the repository:
+
+1. Install Git and Python 3.15.0.
+2. Run:
+
+   git clone https://github.com/feddernico/tab-dumper.git
+   cd tab-dumper
+   python3 scripts/package.py
+
+3. The resulting file is dist/tab-dumper-2.0.1-opera.zip.
+   The script validates the manifest, included files and icon dimensions,
+   and writes a SHA-256 checksum beside the ZIP.
+
+Optional development checks (not required for packaging):
+
+1. Install Node.js 26.12.1, npm 11.20.0 and Opera.
+2. In the repository root, run:
+
+   npm ci
+   npm test
+   npm run test:opera
+
+Set TEST_BROWSER_PATH to the Opera executable if it is not installed in
+one of the default locations detected by scripts/test-opera.mjs.
+The test opens an isolated temporary profile and does not use personal tabs.
+
+To run the submitted ZIP without any development tools, extract it, open
+opera://extensions, enable Developer mode, choose Load unpacked and select
+the extracted folder containing manifest.json. No build command is needed.

@@ -1,0 +1,7 @@
+node_modules/
+test-results/
+dist/
+.DS_Store
+submission/website/
+submission/screenshots/website-*
+submission/tally-support.jpg

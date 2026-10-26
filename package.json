@@ -1,0 +1,17 @@
+{
+  "name": "tab-dumper",
+  "private": true,
+  "version": "2.0.1",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node tests/browser.mjs",
+    "test:opera": "node scripts/test-opera.mjs",
+    "icons": "node scripts/generate-icons.mjs",
+    "package": "python3 scripts/package.py"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.2.6",
+    "playwright": "^1.64.1"
+  }
+}
